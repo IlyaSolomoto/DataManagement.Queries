@@ -1,37 +1,29 @@
 ﻿using System;
-using DataManagement.Queries.Consistency;
+using Persistance.Consistency;
 
-namespace DataManagement.Queries
+namespace Persistance
 {
-    /// <summary>
-    /// Запрос извлечения данных из UoW.
-    /// </summary>
-    /// <remarks>
-    /// Контейнер для делегата Func'2, служащего для извлечения данных из UoW.
-    /// </remarks>
-    /// <typeparam name="TUnitOfWork"></typeparam>
-    /// <typeparam name="TResult"></typeparam>
-    public class Query<TUnitOfWork, TResult> : IQuery<TUnitOfWork, TResult>
-        where TUnitOfWork : IUnitOfWork
-    {
-        private readonly Func<TUnitOfWork, TResult> _select;
+	public class Query<TStorage, TResult> : IQuery<TStorage, TResult>
+		where TStorage : IStorage
+	{
+		private readonly Func<TStorage, TResult> _query;
 
-        public Query(Func<TUnitOfWork, TResult> select)
-        {
-            if (select == null)
-                throw new ArgumentNullException("select");
+		public Query(Func<TStorage, TResult> query)
+		{
+			if (query == null)
+				throw new ArgumentNullException("query");
 
-            _select = select;
-        }
+			_query = query;
+		}
 
-        public TResult Execute(TUnitOfWork unitOfWork)
-        {
-            if (unitOfWork == null)
-                throw new ArgumentNullException("unitOfWork");
+		public TResult Fetch(TStorage storage)
+		{
+			if (storage == null)
+				throw new ArgumentNullException("storage");
 
-            var selectedData = _select(unitOfWork);
+			var selectedData = _query(storage);
 
-            return selectedData;
-        }
-    }
+			return selectedData;
+		}
+	}
 }
