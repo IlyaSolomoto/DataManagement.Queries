@@ -1,5 +1,5 @@
 ﻿using System.Data.Entity;
-using Domain.Entities;
+using Application.Domain;
 
 namespace SqlDataAccess
 {

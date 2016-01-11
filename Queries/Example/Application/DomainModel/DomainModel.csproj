@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F880BAD3-202E-48C1-A578-0D3CF5C532A2}</ProjectGuid>
+    <ProjectGuid>{770F4AF4-ABD4-4A7F-B968-104AED8006DA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Persistance</RootNamespace>
-    <AssemblyName>Persistance</AssemblyName>
+    <RootNamespace>Application.Domain</RootNamespace>
+    <AssemblyName>Application.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,13 +39,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\Command.cs" />
-    <Compile Include="Commands\ICommand.cs" />
-    <Compile Include="IPersistanceController.cs" />
+    <Compile Include="City.cs" />
+    <Compile Include="Country.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Consistency\IStorage.cs" />
-    <Compile Include="Queries\IQuery.cs" />
-    <Compile Include="Queries\Query.cs" />
+    <Compile Include="Specifications\BestCountrySpecification.cs" />
+    <Compile Include="Specifications\ISpecification.cs" />
+    <Compile Include="Specifications\GenericSpecification.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

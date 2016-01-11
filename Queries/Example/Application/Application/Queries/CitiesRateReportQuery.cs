@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Domain.Entities;
-using Persistance;
-using Persistance.Consistency;
+using Application.Domain;
+using Application.Domain.Specifications;
+using Queries;
 
 namespace Application.Queries
 {
@@ -16,7 +16,7 @@ namespace Application.Queries
 	/// Это позволит избежать бесконтрольного использования Query и сделает возможным
 	/// тестирование запросов в изоляции от другой бизнес-логики (и на тестовых данных).
 	/// </remarks>
-	public class CitiesRateReportQuery : Query<IStorage, IEnumerable<City>>
+	public class CitiesRateReportQuery : Query<City, Country, IEnumerable<City>>
 	{
 		/// <summary>
 		/// 
@@ -37,11 +37,13 @@ namespace Application.Queries
 		/// <param name="pageIndex"></param>
 		/// <param name="itemsPerPage"></param>
 		/// <returns></returns>
-		private static Func<IStorage, IEnumerable<City>> Select(int pageIndex, int itemsPerPage)
+		private static Func<IQueryable<City>, IQueryable<Country>, IEnumerable<City>> Select(int pageIndex, int itemsPerPage)
 		{
-			Func<IStorage, IEnumerable<City>> selector = storage =>
-				storage.Queryable<Country>()
-				.Where(c => c.HomosectualizmAllowed)
+			var bestCountrySpecification = new BestCountrySpecification();
+
+			Func<IQueryable<City>, IQueryable<Country>, IEnumerable<City>> selector = (cities, countries) =>
+				countries
+				.Where(c => bestCountrySpecification.IsSatisfiedBy(c))
 				.SelectMany(c => c.Cities)
 				.OrderBy(c => c.BlackPeopleRate)
 				.Skip(pageIndex * itemsPerPage)

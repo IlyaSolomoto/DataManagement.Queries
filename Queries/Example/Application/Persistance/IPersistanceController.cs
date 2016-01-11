@@ -1,7 +1,4 @@
-﻿using Persistance.Commands;
-using Persistance.Consistency;
-
-namespace Persistance
+﻿namespace Application.Persistance
 {
 	/// <summary>
 	/// 
@@ -14,12 +11,8 @@ namespace Persistance
 	/// Он контролирует согласованность данных, поддерживая транзакционность при модификации хранилища,
 	/// а так же контролирует неизменность хранилища при выполнении query.
 	/// </remarks>
-	/// <typeparam name="TStorage"></typeparam>
-	public interface IPersistanceController<out TStorage>
-		where TStorage : IStorage
+	public interface IPersistanceController
 	{
-		void ExecuteTransactional(ICommand<TStorage> command);
-
-		TResult FetchData<TResult>(IQuery<TStorage, TResult> query);
+		IApplicationStorage GetStorage();
 	}
 }

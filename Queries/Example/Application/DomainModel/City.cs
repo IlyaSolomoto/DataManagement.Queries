@@ -1,4 +1,4 @@
-﻿namespace Domain.Entities
+﻿namespace Application.Domain
 {
 	public class City
 	{

@@ -3,19 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistance", "DataManagement\Persistance.csproj", "{F880BAD3-202E-48C1-A578-0D3CF5C532A2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Queries", "Queries\Queries.csproj", "{F880BAD3-202E-48C1-A578-0D3CF5C532A2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Example", "Example", "{7DA900DC-755F-46D7-8645-3EC16CCE03E8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{9C44E97C-4815-456B-8FD7-1A4D4A77C92E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{FBB7A190-5142-4E7B-AF76-E10695F42507}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{FBB7A190-5142-4E7B-AF76-E10695F42507}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainModel", "Example\Domain\Domain\DomainModel.csproj", "{770F4AF4-ABD4-4A7F-B968-104AED8006DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainModel", "Example\Application\DomainModel\DomainModel.csproj", "{770F4AF4-ABD4-4A7F-B968-104AED8006DA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlDataAccess", "Example\Infrastructure\SqlDataAccess\SqlDataAccess.csproj", "{04337459-8187-47B7-BFAA-10AB5501A56C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{691A0010-DA36-4015-ABDE-F79ABA39360E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Example\Application\Application\Application.csproj", "{691A0010-DA36-4015-ABDE-F79ABA39360E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistance", "Example\Application\Persistance\Persistance.csproj", "{A87ED162-18B1-47F5-8D0E-7119962D28E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{691A0010-DA36-4015-ABDE-F79ABA39360E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{691A0010-DA36-4015-ABDE-F79ABA39360E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{691A0010-DA36-4015-ABDE-F79ABA39360E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A87ED162-18B1-47F5-8D0E-7119962D28E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A87ED162-18B1-47F5-8D0E-7119962D28E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A87ED162-18B1-47F5-8D0E-7119962D28E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A87ED162-18B1-47F5-8D0E-7119962D28E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,5 +55,6 @@ Global
 		{770F4AF4-ABD4-4A7F-B968-104AED8006DA} = {FBB7A190-5142-4E7B-AF76-E10695F42507}
 		{04337459-8187-47B7-BFAA-10AB5501A56C} = {9C44E97C-4815-456B-8FD7-1A4D4A77C92E}
 		{691A0010-DA36-4015-ABDE-F79ABA39360E} = {FBB7A190-5142-4E7B-AF76-E10695F42507}
+		{A87ED162-18B1-47F5-8D0E-7119962D28E9} = {FBB7A190-5142-4E7B-AF76-E10695F42507}
 	EndGlobalSection
 EndGlobal

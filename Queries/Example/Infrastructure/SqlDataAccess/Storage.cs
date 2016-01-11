@@ -1,37 +1,35 @@
-﻿using System.Data.Entity;
+﻿using System;
 using System.Linq;
-using Persistance.Consistency;
+using Application.Domain;
+using Application.Persistance;
 
 namespace SqlDataAccess
 {
-	public class Storage : IStorage
+	public class ApplicationStorage : IApplicationStorage
 	{
 		private readonly AppDbContext _dbContext;
 
-		internal Storage(AppDbContext dbContext)
+		internal ApplicationStorage(string sqlConnectionString)
 		{
-			_dbContext = dbContext;
+			if (sqlConnectionString == null)
+				throw new ArgumentNullException("sqlConnectionString");
+
+			_dbContext = new AppDbContext(sqlConnectionString);
 		}
 
-		public IQueryable<T> Queryable<T>() where T : class
+		public void Dispose()
 		{
-			return _dbContext.Set<T>()
-				.AsNoTracking();
+			_dbContext.Dispose();
 		}
 
-		public void Add<T>(T item) where T : class
+		public IQueryable<City> Cities
 		{
-			_dbContext.Set<T>().Add(item);
+			get { return _dbContext.Set<City>(); }
 		}
 
-		public void Update<T>(T item) where T : class
+		public IQueryable<Country> Countries
 		{
-			_dbContext.Entry(item).State = EntityState.Modified;
-		}
-
-		public void Remove<T>(T item) where T : class
-		{
-			_dbContext.Set<T>().Remove(item);
+			get { return _dbContext.Set<Country>(); }
 		}
 	}
 }
